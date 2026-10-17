@@ -21,7 +21,7 @@ export function DocumentFilterBar({
             type="text"
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            placeholder="Search documents by title, keyword, or policy..."
+            placeholder="Search by certificate title, authority, ref no., or category..."
             className="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-school-secondary/30 focus:border-school-secondary text-sm text-slate-700 placeholder-slate-400 transition-colors"
           />
           {searchQuery && (

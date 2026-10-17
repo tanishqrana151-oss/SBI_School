@@ -36,9 +36,33 @@ export function DocumentCard({ doc, index = 0 }) {
         </h3>
 
         {/* Description */}
-        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
+        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3 line-clamp-3">
           {doc.description}
         </p>
+
+        {/* Issuing Authority & Reference Box */}
+        {(doc.authority || doc.refNumber || doc.validity) && (
+          <div className="bg-slate-50/90 rounded-xl p-3 mb-4 border border-slate-100 space-y-1.5 text-xs">
+            {doc.authority && (
+              <div className="flex items-start gap-1.5 text-slate-700">
+                <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                <span className="leading-snug">
+                  <strong className="text-slate-800">Authority:</strong> {doc.authority}
+                </span>
+              </div>
+            )}
+            <div className="flex flex-wrap items-center justify-between gap-1 text-[11px] text-slate-500 pl-5">
+              {doc.refNumber && (
+                <span className="font-mono text-slate-600 truncate">{doc.refNumber}</span>
+              )}
+              {doc.validity && (
+                <span className="text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/60 ml-auto">
+                  {doc.validity}
+                </span>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* File Specs Metadata */}
         <div className="flex items-center gap-4 text-xs text-slate-400 mb-5 pb-4 border-b border-slate-100">

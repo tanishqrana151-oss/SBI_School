@@ -22,7 +22,10 @@ export function Documents() {
         !query ||
         doc.title.toLowerCase().includes(query) ||
         doc.description.toLowerCase().includes(query) ||
-        doc.category.toLowerCase().includes(query);
+        doc.category.toLowerCase().includes(query) ||
+        (doc.authority && doc.authority.toLowerCase().includes(query)) ||
+        (doc.refNumber && doc.refNumber.toLowerCase().includes(query)) ||
+        (doc.badge && doc.badge.toLowerCase().includes(query));
 
       return matchesCategory && matchesSearch;
     });
@@ -36,15 +39,15 @@ export function Documents() {
   return (
     <>
       <SEO
-        title="Documents & Downloads"
-        description="Download admission forms, syllabus, examination datesheets, and fee structure for S.B.I. School."
+        title="Official Documents & Mandatory Disclosures"
+        description="Download official compliance certificates, building safety approval, land records, built-up area details, and water test reports for Saint Brahamanand International School, Mundri."
       />
 
       {/* Page Hero */}
       <PageHero
-        title="Documents & Downloads"
-        subtitle="Admission forms, syllabus, examination schedules, and fee details."
-        badge="Downloads"
+        title="Official Documents & Certificates"
+        subtitle="Public disclosures, building safety, land ownership records, and health & sanitary certifications."
+        badge="Mandatory Disclosures"
         breadcrumbs={[{ label: "Documents" }]}
         backgroundImage="/images/hero/hero-campus-main.jpg"
       />
