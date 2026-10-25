@@ -6,6 +6,24 @@ export const schoolInfo = {
   tagline: "Permanent Recognised • Nur. to 10+2",
   affiliation: "Permanent Recognised • Haryana Board / CBSE Aligned",
   location: "Mundri (Kaithal)",
+
+  director: {
+    name: "Sparsh Chauhan",
+    title: "Director",
+    caption: "Our Director-Sparsh Chauhan",
+    image: "/images/leadership/director-sparsh-chauhan.jpg",
+    institution: "Saint Brahmanand International School"
+  },
+
+  mission: {
+    title: "Our Mission",
+    statement: "Saint Brahmanand International School's mission is to develop the virtues, character and patriotism in the young generation by synthesizing the ideal of our ancient Vedic culture with ultra modern education. We are committed to provide the students resources based education with global opportunities, to enhance their inner potentials and to develop value based life skills which eventually lead them to become the responsible citizens."
+  },
+
+  vision: {
+    title: "Our Vision",
+    statement: "School Management believe in traditional values of Vedic system and holistic development of students with world wide modern system. Saint Brahmanand International School lays stress on the highest level of humanity ,spirituality & to be recognized as on academic center of excellence in India And Abroad."
+  },
   
   contact: {
     address: {

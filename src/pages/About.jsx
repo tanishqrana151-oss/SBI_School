@@ -1,5 +1,6 @@
 import { SEO } from '../components/common/SEO';
 import { PageHero } from '../components/common/PageHero';
+import { MissionVision } from '../components/about/MissionVision';
 import { CoreValues } from '../components/about/CoreValues';
 import { AboutGallerySection } from '../components/about/AboutGallerySection';
 import { CTASection } from '../components/common/CTASection';
@@ -9,7 +10,7 @@ export function About() {
     <>
       <SEO
         title="About Us"
-        description="About S.B.I. School, Mundri (Kaithal) - Permanent Recognised education from Nursery to 10+2."
+        description="About Saint Brahmanand International School, Mundri (Kaithal) - Our Mission, Vision, and Leadership."
       />
 
       {/* Page Hero */}
@@ -20,6 +21,9 @@ export function About() {
         breadcrumbs={[{ label: "About Us" }]}
         backgroundImage="/images/about-gallery/aerial-campus-view.jpeg"
       />
+
+      {/* Our Mission (First, with Director Sparsh Chauhan photo side-by-side) & Our Vision */}
+      <MissionVision />
 
       {/* Core Values with Icons */}
       <CoreValues />

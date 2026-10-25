@@ -72,14 +72,37 @@ export function HomeWelcome() {
               ))}
             </div>
 
+            {/* Leadership & Mission Callout */}
+            <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80 mt-2">
+              <img
+                src="/images/leadership/director-sparsh-chauhan.jpg"
+                alt="Our Director-Sparsh Chauhan"
+                className="w-12 h-12 rounded-full object-cover object-top border-2 border-school-accent/70 shrink-0 shadow-sm"
+              />
+              <div className="min-w-0">
+                <p className="text-xs sm:text-sm font-bold text-school-primary font-heading truncate">
+                  Our Director-Sparsh Chauhan
+                </p>
+                <p className="text-[11px] text-slate-500 truncate">
+                  Guiding our mission to synthesize Vedic values with modern education
+                </p>
+              </div>
+            </div>
+
             {/* Action CTA */}
-            <div className="pt-3">
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <Link
-                to="/about"
+                to="/about#mission-vision"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-school-primary hover:bg-school-secondary text-white font-bold text-xs uppercase tracking-wider shadow-soft transition-colors group"
               >
-                <span>About Our School</span>
+                <span>Our Mission & Vision</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-school-primary font-bold text-xs uppercase tracking-wider border border-slate-200 shadow-soft-sm transition-colors"
+              >
+                <span>About Campus</span>
               </Link>
             </div>
           </motion.div>
