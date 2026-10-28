@@ -1,10 +1,20 @@
 export const announcements = [
   {
+    id: "ann-calendar",
+    title: "Official Academic Calendar (2026–2027) Published",
+    category: "Academic",
+    date: "October 28, 2026",
+    isUrgent: true,
+    summary: "The official academic schedule detailing government gazetted holidays and school break notifications is now available for download.",
+    linkText: "View Calendar",
+    linkTo: "/documents?category=Academic%20Calendar"
+  },
+  {
     id: "ann-1",
     title: "Admissions Open for Academic Session 2026-2027",
     category: "Admissions",
     date: "April 15, 2026",
-    isUrgent: true,
+    isUrgent: false,
     summary: "Applications are now invited for Kindergarten to Grade 11. Early bird scholarship evaluation round closing soon.",
     linkText: "Apply Now",
     linkTo: "/documents"
@@ -31,4 +41,4 @@ export const announcements = [
   }
 ];
 
-export const tickerNotice = "Admissions Open for 2026-27 Academic Year | Merit-based Scholarships Available | Campus Tours Every Saturday at 10:00 AM";
+export const tickerNotice = "Academic Calendar 2026–27 Published | Admissions Open for 2026-27 Academic Year | Merit-based Scholarships Available | Campus Tours Every Saturday";

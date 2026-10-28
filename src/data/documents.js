@@ -1,11 +1,29 @@
 export const documentCategories = [
   "All Documents",
+  "Academic Calendar",
   "Safety & Compliance",
   "Land & Infrastructure",
   "Health & Sanitation"
 ];
 
 export const documentsData = [
+  {
+    id: "doc-academic-calendar-2026-27",
+    title: "Academic Calendar Overview (2026–2027 Session)",
+    category: "Academic Calendar",
+    description: "Official annual calendar detailing government holidays, gazetted observances, Haryana state holidays, and seasonal breaks (Summer, Diwali & Winter) compliant with CBSE guidelines.",
+    filePath: "/documents/school-calendar-2026-2027.pdf",
+    fileSize: "97 KB",
+    uploadDate: "Oct 2026",
+    format: "PDF",
+    badge: "2026–27 Session",
+    authority: "Saint Brahmanand International School (Kaithal, Haryana)",
+    refNumber: "CBSE & Haryana Guidelines 2026-2027",
+    validity: "Session 2026–2027",
+    downloadsCount: 1950,
+    hasInteractiveView: true,
+    keywords: "calendar holidays schedule 2026 2027 good friday ambedkar jayanti vaisakhi id-ul-zuha bakrid maharana pratap muharram shaheed udham singh independence day raksha bandhan janmashtami haryana heroes martyrdom mahatma gandhi dussehra valmiki haryana day guru nanak christmas republic day maha shivratri holi summer break diwali break winter break"
+  },
   {
     id: "doc-building-safety",
     title: "Building Safety Certificate (Annexure D)",

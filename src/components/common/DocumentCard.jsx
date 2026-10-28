@@ -1,7 +1,7 @@
 import { FileText, Download, ExternalLink, Calendar, HardDrive, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export function DocumentCard({ doc, index = 0 }) {
+export function DocumentCard({ doc, index = 0, onPreview }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
@@ -80,28 +80,41 @@ export function DocumentCard({ doc, index = 0 }) {
         </div>
       </div>
 
-      {/* Action Buttons: Direct Download + View In Browser */}
-      <div className="grid grid-cols-2 gap-2.5">
-        <a
-          href={doc.filePath}
-          download
-          className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-school-primary hover:bg-school-secondary text-white text-xs font-bold shadow-sm transition-colors"
-          title={`Download ${doc.title}`}
-        >
-          <Download className="w-3.5 h-3.5" />
-          <span>Download</span>
-        </a>
+      {/* Action Buttons: Direct Download + View In Browser (+ Optional Interactive Preview) */}
+      <div className="space-y-2">
+        {doc.hasInteractiveView && onPreview && (
+          <button
+            type="button"
+            onClick={() => onPreview(doc)}
+            className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-school-accent hover:bg-school-accent-dark text-school-primary-dark font-bold text-xs shadow-sm transition-all duration-200 hover:scale-[1.01]"
+          >
+            <Calendar className="w-3.5 h-3.5 text-school-primary-dark" />
+            <span>View Holiday Schedule</span>
+          </button>
+        )}
 
-        <a
-          href={doc.filePath}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold transition-colors"
-          title={`View ${doc.title} in new tab`}
-        >
-          <ExternalLink className="w-3.5 h-3.5" />
-          <span>View Online</span>
-        </a>
+        <div className="grid grid-cols-2 gap-2.5">
+          <a
+            href={doc.filePath}
+            download
+            className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-school-primary hover:bg-school-secondary text-white text-xs font-bold shadow-sm transition-colors"
+            title={`Download ${doc.title}`}
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>Download</span>
+          </a>
+
+          <a
+            href={doc.filePath}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold transition-colors"
+            title={`View ${doc.title} in new tab`}
+          >
+            <ExternalLink className="w-3.5 h-3.5" />
+            <span>View Online</span>
+          </a>
+        </div>
       </div>
     </motion.div>
   );

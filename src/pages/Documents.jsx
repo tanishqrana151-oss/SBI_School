@@ -1,16 +1,37 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { SEO } from '../components/common/SEO';
 import { PageHero } from '../components/common/PageHero';
 import { DocumentFilterBar } from '../components/documents/DocumentFilterBar';
 import { DocumentCard } from '../components/common/DocumentCard';
 import { CTASection } from '../components/common/CTASection';
+import { AcademicCalendarSpotlight } from '../components/documents/AcademicCalendarSpotlight';
+import { AcademicCalendarModal } from '../components/documents/AcademicCalendarModal';
 import { documentsData, documentCategories } from '../data/documents';
 import { FileSearch, RefreshCw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function Documents() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialCategory = searchParams.get('category') || 'All Documents';
+  const initialOpenCalendar = searchParams.get('calendar') === 'true';
+
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All Documents');
+  const [selectedCategory, setSelectedCategory] = useState(
+    documentCategories.includes(initialCategory) ? initialCategory : 'All Documents'
+  );
+  const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(initialOpenCalendar);
+
+  // Sync category changes with URL parameter cleanly without page reloads
+  const handleCategoryChange = (cat) => {
+    setSelectedCategory(cat);
+    if (cat === 'All Documents') {
+      searchParams.delete('category');
+    } else {
+      searchParams.set('category', cat);
+    }
+    setSearchParams(searchParams, { replace: true });
+  };
 
   const filteredDocuments = useMemo(() => {
     return documentsData.filter((doc) => {
@@ -25,7 +46,8 @@ export function Documents() {
         doc.category.toLowerCase().includes(query) ||
         (doc.authority && doc.authority.toLowerCase().includes(query)) ||
         (doc.refNumber && doc.refNumber.toLowerCase().includes(query)) ||
-        (doc.badge && doc.badge.toLowerCase().includes(query));
+        (doc.badge && doc.badge.toLowerCase().includes(query)) ||
+        (doc.keywords && doc.keywords.toLowerCase().includes(query));
 
       return matchesCategory && matchesSearch;
     });
@@ -33,21 +55,27 @@ export function Documents() {
 
   const handleResetFilters = () => {
     setSearchQuery('');
-    setSelectedCategory('All Documents');
+    handleCategoryChange('All Documents');
+  };
+
+  const handleDocumentPreview = (doc) => {
+    if (doc.id === 'doc-academic-calendar-2026-27' || doc.hasInteractiveView) {
+      setIsCalendarModalOpen(true);
+    }
   };
 
   return (
     <>
       <SEO
-        title="Official Documents & Mandatory Disclosures"
-        description="Download official compliance certificates, building safety approval, land records, built-up area details, and water test reports for Saint Brahamanand International School, Mundri."
+        title="Official Documents, Academic Calendar & Mandatory Disclosures"
+        description="Download official school academic calendar (2026-2027), CBSE compliance certificates, building safety approval, land records, built-up area details, and water test reports for Saint Brahmanand International School, Mundri."
       />
 
       {/* Page Hero */}
       <PageHero
         title="Official Documents & Certificates"
-        subtitle="Public disclosures, building safety, land ownership records, and health & sanitary certifications."
-        badge="Mandatory Disclosures"
+        subtitle="School academic calendar, mandatory public disclosures, building safety, land ownership records, and health certifications."
+        badge="Documents & Downloads"
         breadcrumbs={[{ label: "Documents" }]}
         backgroundImage="/images/hero/hero-campus-main.jpg"
       />
@@ -55,12 +83,15 @@ export function Documents() {
       {/* Documents Section */}
       <section className="py-14 sm:py-16 bg-slate-50 min-h-[500px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Featured Spotlight: Academic Calendar Overview */}
+          <AcademicCalendarSpotlight onOpenModal={() => setIsCalendarModalOpen(true)} />
+
           {/* Filter Bar */}
           <DocumentFilterBar
             searchQuery={searchQuery}
             onSearchChange={setSearchQuery}
             selectedCategory={selectedCategory}
-            onCategoryChange={setSelectedCategory}
+            onCategoryChange={handleCategoryChange}
             categories={documentCategories}
             totalCount={documentsData.length}
             filteredCount={filteredDocuments.length}
@@ -74,7 +105,12 @@ export function Documents() {
             >
               <AnimatePresence>
                 {filteredDocuments.map((doc, idx) => (
-                  <DocumentCard key={doc.id} doc={doc} index={idx} />
+                  <DocumentCard
+                    key={doc.id}
+                    doc={doc}
+                    index={idx}
+                    onPreview={handleDocumentPreview}
+                  />
                 ))}
               </AnimatePresence>
             </motion.div>
@@ -104,10 +140,16 @@ export function Documents() {
         </div>
       </section>
 
+      {/* Interactive Academic Calendar Modal */}
+      <AcademicCalendarModal
+        isOpen={isCalendarModalOpen}
+        onClose={() => setIsCalendarModalOpen(false)}
+      />
+
       {/* CTA Section */}
       <CTASection
-        title="Need Assistance?"
-        subtitle="Contact the school office for help with forms or admissions."
+        title="Need Assistance with Documents or Forms?"
+        subtitle="Contact the school administrative office for help with admissions, academic calendars, or transfers."
         primaryButtonText="Contact Us"
         primaryButtonLink="/contact"
         secondaryButtonText="All Streams"
