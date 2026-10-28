@@ -132,7 +132,7 @@ export function AcademicCalendarModal({ isOpen, onClose }) {
             </div>
 
             {/* Quick Metrics */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-5 pt-4 border-t border-white/10 text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-5 pt-4 border-t border-white/10 text-xs">
               <div className="bg-white/10 rounded-xl p-2.5 backdrop-blur-sm border border-white/10">
                 <p className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold">Total Holidays</p>
                 <p className="text-base sm:text-lg font-bold text-school-accent font-heading">19 Holidays</p>
@@ -144,10 +144,6 @@ export function AcademicCalendarModal({ isOpen, onClose }) {
               <div className="bg-white/10 rounded-xl p-2.5 backdrop-blur-sm border border-white/10">
                 <p className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold">School Breaks</p>
                 <p className="text-base sm:text-lg font-bold text-white font-heading">3 Recesses</p>
-              </div>
-              <div className="bg-white/10 rounded-xl p-2.5 backdrop-blur-sm border border-white/10">
-                <p className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold">Affiliation</p>
-                <p className="text-base sm:text-lg font-bold text-emerald-400 font-heading">Haryana / CBSE</p>
               </div>
             </div>
           </div>

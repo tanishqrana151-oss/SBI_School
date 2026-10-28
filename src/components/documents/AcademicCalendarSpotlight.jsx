@@ -23,7 +23,7 @@ export function AcademicCalendarSpotlight({ onOpenModal }) {
               <span>Official Release • Session 2026–2027</span>
             </span>
             <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-slate-200 border border-white/15 backdrop-blur-sm">
-              Haryana & CBSE Aligned
+              Annual School Schedule
             </span>
           </div>
 
